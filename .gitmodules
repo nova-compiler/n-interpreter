@@ -1,0 +1,6 @@
+[submodule "external-components/n-engine"]
+	path = external-components/n-engine
+	url = https://github.com/nova-compiler/n-engine.git
+[submodule "external-components/n-test"]
+	path = external-components/n-test
+	url = https://github.com/nova-compiler/n-test.git
