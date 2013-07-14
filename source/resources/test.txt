@@ -1,0 +1,6 @@
+var k, j;
+var h6;
+var s = 5, f = s + 3, k : int;
+s = 4 + 3;
+print(s)
+print(f)

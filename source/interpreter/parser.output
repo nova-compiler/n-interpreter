@@ -1,0 +1,607 @@
+Terminals unused in grammar
+
+   T_DOUBLE
+   T_ADD_ASSIGN
+   T_SUB_ASSIGN
+   T_MULT_ASSIGN
+   T_DIV_ASSIGN
+   T_LSFT_ASSIGN
+   T_RSFT_ASSIGN
+   T_MINUS
+   T_MUL
+   T_DIV
+   T_AND
+   T_OR
+   T_XOR
+   T_NOT
+   T_LSFT
+   T_RSFT
+   T_EQL_COMP
+   T_NEQ_COMP
+   T_LSS_COMP
+   T_LEQ_COMP
+   T_GTR_COMP
+   T_GEQ_COMP
+   T_INCR
+   T_DECR
+   T_UNARY_LSFT
+   T_UNARY_RSFT
+   T_LEFT_BRACE
+   T_RIGHT_BRACE
+   T_LEFT_BRACKET
+   T_RIGHT_BRACKET
+   T_DOT
+   T_ELLIPSIS
+
+
+Grammar
+
+    0 $accept: program "end of file"
+
+    1 program: stmts
+
+    2 stmts: stmt
+    3      | stmts stmt
+
+    4 stmt: expression_stmt
+    5     | declaration_stmt
+
+    6 expression_stmt: expression T_SEMICOLON
+
+    7 expression: T_OPEN_PAREN expression T_CLOSE_PAREN
+    8           | expression T_ASSIGN expression
+    9           | expression T_PLUS expression
+   10           | identifier_expression
+   11           | numeric_expression
+
+   12 declaration_stmt: T_VAR declaration_list T_SEMICOLON
+
+   13 declaration_list: identifier_definition_list
+   14                 | identifier_definition_list T_COLON expression
+   15                 | identifier_definition_list T_COLON expression T_COMMA declaration_list
+
+   16 identifier_definition_list: identifier_definition
+   17                           | identifier_definition_list T_COMMA identifier_definition
+
+   18 identifier_definition: identifier T_ASSIGN expression
+   19                      | identifier
+
+   20 numeric_expression: T_INTEGER
+
+   21 identifier_expression: identifier
+
+   22 identifier: T_IDENTIFIER
+
+
+Terminals, with rules where they appear
+
+"end of file" (0) 0
+error (256)
+T_IDENTIFIER (258) 22
+T_DOUBLE (259)
+T_INTEGER (260) 20
+T_ASSIGN (261) 8 18
+T_ADD_ASSIGN (262)
+T_SUB_ASSIGN (263)
+T_MULT_ASSIGN (264)
+T_DIV_ASSIGN (265)
+T_LSFT_ASSIGN (266)
+T_RSFT_ASSIGN (267)
+T_PLUS (268) 9
+T_MINUS (269)
+T_MUL (270)
+T_DIV (271)
+T_AND (272)
+T_OR (273)
+T_XOR (274)
+T_NOT (275)
+T_LSFT (276)
+T_RSFT (277)
+T_EQL_COMP (278)
+T_NEQ_COMP (279)
+T_LSS_COMP (280)
+T_LEQ_COMP (281)
+T_GTR_COMP (282)
+T_GEQ_COMP (283)
+T_INCR (284)
+T_DECR (285)
+T_UNARY_LSFT (286)
+T_UNARY_RSFT (287)
+T_OPEN_PAREN (288) 7
+T_CLOSE_PAREN (289) 7
+T_LEFT_BRACE (290)
+T_RIGHT_BRACE (291)
+T_LEFT_BRACKET (292)
+T_RIGHT_BRACKET (293)
+T_VAR (294) 12
+T_DOT (295)
+T_COMMA (296) 15 17
+T_SEMICOLON (297) 6 12
+T_COLON (298) 14 15
+T_ELLIPSIS (299)
+
+
+Nonterminals, with rules where they appear
+
+$accept (45)
+    on left: 0
+program (46)
+    on left: 1, on right: 0
+stmts (47)
+    on left: 2 3, on right: 1 3
+stmt (48)
+    on left: 4 5, on right: 2 3
+expression_stmt (49)
+    on left: 6, on right: 4
+expression (50)
+    on left: 7 8 9 10 11, on right: 6 7 8 9 14 15 18
+declaration_stmt (51)
+    on left: 12, on right: 5
+declaration_list (52)
+    on left: 13 14 15, on right: 12 15
+identifier_definition_list (53)
+    on left: 16 17, on right: 13 14 15 17
+identifier_definition (54)
+    on left: 18 19, on right: 16 17
+numeric_expression (55)
+    on left: 20, on right: 11
+identifier_expression (56)
+    on left: 21, on right: 10
+identifier (57)
+    on left: 22, on right: 18 19 21
+
+
+state 0
+
+    0 $accept: . program "end of file"
+    1 program: . stmts
+    2 stmts: . stmt
+    3      | . stmts stmt
+    4 stmt: . expression_stmt
+    5     | . declaration_stmt
+    6 expression_stmt: . expression T_SEMICOLON
+    7 expression: . T_OPEN_PAREN expression T_CLOSE_PAREN
+    8           | . expression T_ASSIGN expression
+    9           | . expression T_PLUS expression
+   10           | . identifier_expression
+   11           | . numeric_expression
+   12 declaration_stmt: . T_VAR declaration_list T_SEMICOLON
+   20 numeric_expression: . T_INTEGER
+   21 identifier_expression: . identifier
+   22 identifier: . T_IDENTIFIER
+
+    T_IDENTIFIER  shift, and go to state 1
+    T_INTEGER     shift, and go to state 2
+    T_OPEN_PAREN  shift, and go to state 3
+    T_VAR         shift, and go to state 4
+
+    program                go to state 5
+    stmts                  go to state 6
+    stmt                   go to state 7
+    expression_stmt        go to state 8
+    expression             go to state 9
+    declaration_stmt       go to state 10
+    numeric_expression     go to state 11
+    identifier_expression  go to state 12
+    identifier             go to state 13
+
+
+state 1
+
+   22 identifier: T_IDENTIFIER .
+
+    $default  reduce using rule 22 (identifier)
+
+
+state 2
+
+   20 numeric_expression: T_INTEGER .
+
+    $default  reduce using rule 20 (numeric_expression)
+
+
+state 3
+
+    7 expression: . T_OPEN_PAREN expression T_CLOSE_PAREN
+    7           | T_OPEN_PAREN . expression T_CLOSE_PAREN
+    8           | . expression T_ASSIGN expression
+    9           | . expression T_PLUS expression
+   10           | . identifier_expression
+   11           | . numeric_expression
+   20 numeric_expression: . T_INTEGER
+   21 identifier_expression: . identifier
+   22 identifier: . T_IDENTIFIER
+
+    T_IDENTIFIER  shift, and go to state 1
+    T_INTEGER     shift, and go to state 2
+    T_OPEN_PAREN  shift, and go to state 3
+
+    expression             go to state 14
+    numeric_expression     go to state 11
+    identifier_expression  go to state 12
+    identifier             go to state 13
+
+
+state 4
+
+   12 declaration_stmt: T_VAR . declaration_list T_SEMICOLON
+   13 declaration_list: . identifier_definition_list
+   14                 | . identifier_definition_list T_COLON expression
+   15                 | . identifier_definition_list T_COLON expression T_COMMA declaration_list
+   16 identifier_definition_list: . identifier_definition
+   17                           | . identifier_definition_list T_COMMA identifier_definition
+   18 identifier_definition: . identifier T_ASSIGN expression
+   19                      | . identifier
+   22 identifier: . T_IDENTIFIER
+
+    T_IDENTIFIER  shift, and go to state 1
+
+    declaration_list            go to state 15
+    identifier_definition_list  go to state 16
+    identifier_definition       go to state 17
+    identifier                  go to state 18
+
+
+state 5
+
+    0 $accept: program . "end of file"
+
+    "end of file"  shift, and go to state 19
+
+
+state 6
+
+    1 program: stmts .  ["end of file"]
+    3 stmts: stmts . stmt
+    4 stmt: . expression_stmt
+    5     | . declaration_stmt
+    6 expression_stmt: . expression T_SEMICOLON
+    7 expression: . T_OPEN_PAREN expression T_CLOSE_PAREN
+    8           | . expression T_ASSIGN expression
+    9           | . expression T_PLUS expression
+   10           | . identifier_expression
+   11           | . numeric_expression
+   12 declaration_stmt: . T_VAR declaration_list T_SEMICOLON
+   20 numeric_expression: . T_INTEGER
+   21 identifier_expression: . identifier
+   22 identifier: . T_IDENTIFIER
+
+    T_IDENTIFIER  shift, and go to state 1
+    T_INTEGER     shift, and go to state 2
+    T_OPEN_PAREN  shift, and go to state 3
+    T_VAR         shift, and go to state 4
+
+    $default  reduce using rule 1 (program)
+
+    stmt                   go to state 20
+    expression_stmt        go to state 8
+    expression             go to state 9
+    declaration_stmt       go to state 10
+    numeric_expression     go to state 11
+    identifier_expression  go to state 12
+    identifier             go to state 13
+
+
+state 7
+
+    2 stmts: stmt .
+
+    $default  reduce using rule 2 (stmts)
+
+
+state 8
+
+    4 stmt: expression_stmt .
+
+    $default  reduce using rule 4 (stmt)
+
+
+state 9
+
+    6 expression_stmt: expression . T_SEMICOLON
+    8 expression: expression . T_ASSIGN expression
+    9           | expression . T_PLUS expression
+
+    T_ASSIGN     shift, and go to state 21
+    T_PLUS       shift, and go to state 22
+    T_SEMICOLON  shift, and go to state 23
+
+
+state 10
+
+    5 stmt: declaration_stmt .
+
+    $default  reduce using rule 5 (stmt)
+
+
+state 11
+
+   11 expression: numeric_expression .
+
+    $default  reduce using rule 11 (expression)
+
+
+state 12
+
+   10 expression: identifier_expression .
+
+    $default  reduce using rule 10 (expression)
+
+
+state 13
+
+   21 identifier_expression: identifier .
+
+    $default  reduce using rule 21 (identifier_expression)
+
+
+state 14
+
+    7 expression: T_OPEN_PAREN expression . T_CLOSE_PAREN
+    8           | expression . T_ASSIGN expression
+    9           | expression . T_PLUS expression
+
+    T_ASSIGN       shift, and go to state 21
+    T_PLUS         shift, and go to state 22
+    T_CLOSE_PAREN  shift, and go to state 24
+
+
+state 15
+
+   12 declaration_stmt: T_VAR declaration_list . T_SEMICOLON
+
+    T_SEMICOLON  shift, and go to state 25
+
+
+state 16
+
+   13 declaration_list: identifier_definition_list .  [T_SEMICOLON]
+   14                 | identifier_definition_list . T_COLON expression
+   15                 | identifier_definition_list . T_COLON expression T_COMMA declaration_list
+   17 identifier_definition_list: identifier_definition_list . T_COMMA identifier_definition
+
+    T_COMMA  shift, and go to state 26
+    T_COLON  shift, and go to state 27
+
+    $default  reduce using rule 13 (declaration_list)
+
+
+state 17
+
+   16 identifier_definition_list: identifier_definition .
+
+    $default  reduce using rule 16 (identifier_definition_list)
+
+
+state 18
+
+   18 identifier_definition: identifier . T_ASSIGN expression
+   19                      | identifier .  [T_COMMA, T_SEMICOLON, T_COLON]
+
+    T_ASSIGN  shift, and go to state 28
+
+    $default  reduce using rule 19 (identifier_definition)
+
+
+state 19
+
+    0 $accept: program "end of file" .
+
+    $default  accept
+
+
+state 20
+
+    3 stmts: stmts stmt .
+
+    $default  reduce using rule 3 (stmts)
+
+
+state 21
+
+    7 expression: . T_OPEN_PAREN expression T_CLOSE_PAREN
+    8           | . expression T_ASSIGN expression
+    8           | expression T_ASSIGN . expression
+    9           | . expression T_PLUS expression
+   10           | . identifier_expression
+   11           | . numeric_expression
+   20 numeric_expression: . T_INTEGER
+   21 identifier_expression: . identifier
+   22 identifier: . T_IDENTIFIER
+
+    T_IDENTIFIER  shift, and go to state 1
+    T_INTEGER     shift, and go to state 2
+    T_OPEN_PAREN  shift, and go to state 3
+
+    expression             go to state 29
+    numeric_expression     go to state 11
+    identifier_expression  go to state 12
+    identifier             go to state 13
+
+
+state 22
+
+    7 expression: . T_OPEN_PAREN expression T_CLOSE_PAREN
+    8           | . expression T_ASSIGN expression
+    9           | . expression T_PLUS expression
+    9           | expression T_PLUS . expression
+   10           | . identifier_expression
+   11           | . numeric_expression
+   20 numeric_expression: . T_INTEGER
+   21 identifier_expression: . identifier
+   22 identifier: . T_IDENTIFIER
+
+    T_IDENTIFIER  shift, and go to state 1
+    T_INTEGER     shift, and go to state 2
+    T_OPEN_PAREN  shift, and go to state 3
+
+    expression             go to state 30
+    numeric_expression     go to state 11
+    identifier_expression  go to state 12
+    identifier             go to state 13
+
+
+state 23
+
+    6 expression_stmt: expression T_SEMICOLON .
+
+    $default  reduce using rule 6 (expression_stmt)
+
+
+state 24
+
+    7 expression: T_OPEN_PAREN expression T_CLOSE_PAREN .
+
+    $default  reduce using rule 7 (expression)
+
+
+state 25
+
+   12 declaration_stmt: T_VAR declaration_list T_SEMICOLON .
+
+    $default  reduce using rule 12 (declaration_stmt)
+
+
+state 26
+
+   17 identifier_definition_list: identifier_definition_list T_COMMA . identifier_definition
+   18 identifier_definition: . identifier T_ASSIGN expression
+   19                      | . identifier
+   22 identifier: . T_IDENTIFIER
+
+    T_IDENTIFIER  shift, and go to state 1
+
+    identifier_definition  go to state 31
+    identifier             go to state 18
+
+
+state 27
+
+    7 expression: . T_OPEN_PAREN expression T_CLOSE_PAREN
+    8           | . expression T_ASSIGN expression
+    9           | . expression T_PLUS expression
+   10           | . identifier_expression
+   11           | . numeric_expression
+   14 declaration_list: identifier_definition_list T_COLON . expression
+   15                 | identifier_definition_list T_COLON . expression T_COMMA declaration_list
+   20 numeric_expression: . T_INTEGER
+   21 identifier_expression: . identifier
+   22 identifier: . T_IDENTIFIER
+
+    T_IDENTIFIER  shift, and go to state 1
+    T_INTEGER     shift, and go to state 2
+    T_OPEN_PAREN  shift, and go to state 3
+
+    expression             go to state 32
+    numeric_expression     go to state 11
+    identifier_expression  go to state 12
+    identifier             go to state 13
+
+
+state 28
+
+    7 expression: . T_OPEN_PAREN expression T_CLOSE_PAREN
+    8           | . expression T_ASSIGN expression
+    9           | . expression T_PLUS expression
+   10           | . identifier_expression
+   11           | . numeric_expression
+   18 identifier_definition: identifier T_ASSIGN . expression
+   20 numeric_expression: . T_INTEGER
+   21 identifier_expression: . identifier
+   22 identifier: . T_IDENTIFIER
+
+    T_IDENTIFIER  shift, and go to state 1
+    T_INTEGER     shift, and go to state 2
+    T_OPEN_PAREN  shift, and go to state 3
+
+    expression             go to state 33
+    numeric_expression     go to state 11
+    identifier_expression  go to state 12
+    identifier             go to state 13
+
+
+state 29
+
+    8 expression: expression . T_ASSIGN expression
+    8           | expression T_ASSIGN expression .  [T_CLOSE_PAREN, T_COMMA, T_SEMICOLON, T_COLON]
+    9           | expression . T_PLUS expression
+
+    T_ASSIGN  shift, and go to state 21
+    T_PLUS    shift, and go to state 22
+
+    $default  reduce using rule 8 (expression)
+
+    Conflict between rule 8 and token T_ASSIGN resolved as shift (%right T_ASSIGN).
+    Conflict between rule 8 and token T_PLUS resolved as shift (T_ASSIGN < T_PLUS).
+
+
+state 30
+
+    8 expression: expression . T_ASSIGN expression
+    9           | expression . T_PLUS expression
+    9           | expression T_PLUS expression .  [T_ASSIGN, T_PLUS, T_CLOSE_PAREN, T_COMMA, T_SEMICOLON, T_COLON]
+
+    $default  reduce using rule 9 (expression)
+
+    Conflict between rule 9 and token T_ASSIGN resolved as reduce (T_ASSIGN < T_PLUS).
+    Conflict between rule 9 and token T_PLUS resolved as reduce (%left T_PLUS).
+
+
+state 31
+
+   17 identifier_definition_list: identifier_definition_list T_COMMA identifier_definition .
+
+    $default  reduce using rule 17 (identifier_definition_list)
+
+
+state 32
+
+    8 expression: expression . T_ASSIGN expression
+    9           | expression . T_PLUS expression
+   14 declaration_list: identifier_definition_list T_COLON expression .  [T_SEMICOLON]
+   15                 | identifier_definition_list T_COLON expression . T_COMMA declaration_list
+
+    T_ASSIGN  shift, and go to state 21
+    T_PLUS    shift, and go to state 22
+    T_COMMA   shift, and go to state 34
+
+    $default  reduce using rule 14 (declaration_list)
+
+
+state 33
+
+    8 expression: expression . T_ASSIGN expression
+    9           | expression . T_PLUS expression
+   18 identifier_definition: identifier T_ASSIGN expression .  [T_COMMA, T_SEMICOLON, T_COLON]
+
+    T_ASSIGN  shift, and go to state 21
+    T_PLUS    shift, and go to state 22
+
+    $default  reduce using rule 18 (identifier_definition)
+
+
+state 34
+
+   13 declaration_list: . identifier_definition_list
+   14                 | . identifier_definition_list T_COLON expression
+   15                 | . identifier_definition_list T_COLON expression T_COMMA declaration_list
+   15                 | identifier_definition_list T_COLON expression T_COMMA . declaration_list
+   16 identifier_definition_list: . identifier_definition
+   17                           | . identifier_definition_list T_COMMA identifier_definition
+   18 identifier_definition: . identifier T_ASSIGN expression
+   19                      | . identifier
+   22 identifier: . T_IDENTIFIER
+
+    T_IDENTIFIER  shift, and go to state 1
+
+    declaration_list            go to state 35
+    identifier_definition_list  go to state 16
+    identifier_definition       go to state 17
+    identifier                  go to state 18
+
+
+state 35
+
+   15 declaration_list: identifier_definition_list T_COLON expression T_COMMA declaration_list .
+
+    $default  reduce using rule 15 (declaration_list)

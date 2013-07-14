@@ -1,0 +1,9 @@
+{
+	"context" : {
+		"nova.version.major"     : "0",
+		"nova.version.minor"     : "1",
+		"nova.version.patch"     : "0",
+		"nova.version.release"   : "0",
+		"nova.version.extension" : "-alpha"
+	}
+}

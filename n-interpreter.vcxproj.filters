@@ -1,17 +1,74 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <None Include="LICENSE" />
-    <None Include="LICENSE.md" />
+    <None Include="source\interpreter\parser.output">
+      <Filter>source\interpreter</Filter>
+    </None>
+    <None Include="LICENSE">
+      <Filter>project-info</Filter>
+    </None>
+    <None Include="LICENSE.md">
+      <Filter>project-info</Filter>
+    </None>
+    <None Include=".tools-settings">
+      <Filter>project-info</Filter>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="source">
       <UniqueIdentifier>{75dc8243-a249-4a26-bc11-ab58c654adbe}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="source\resources">
+      <UniqueIdentifier>{941f611e-c674-4aa4-a14c-0dfd9d03b36f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="source\interpreter">
+      <UniqueIdentifier>{4da58f15-dbc2-4919-b7fc-3442e55daad2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="project-info">
+      <UniqueIdentifier>{ca7c9668-1f78-45c7-8349-3b5a8d047d81}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="source\main.cpp">
       <Filter>source</Filter>
     </ClCompile>
+    <ClCompile Include="source\interpreter\parser.cpp">
+      <Filter>source\interpreter</Filter>
+    </ClCompile>
+    <ClCompile Include="source\interpreter\tokens.cpp">
+      <Filter>source\interpreter</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="source\resources\test.txt">
+      <Filter>source\resources</Filter>
+    </Text>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="source\resources\nova-grammar.y">
+      <Filter>source\resources</Filter>
+    </CustomBuild>
+    <CustomBuild Include="source\resources\nova-tokens.l">
+      <Filter>source\resources</Filter>
+    </CustomBuild>
+    <CustomBuild Include="source\resources\n-interpreter.tpl-rc">
+      <Filter>source\resources</Filter>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="source\interpreter\parser.hpp">
+      <Filter>source\interpreter</Filter>
+    </ClInclude>
+    <ClInclude Include="source\interpreter\ast-generator.hpp">
+      <Filter>source\interpreter</Filter>
+    </ClInclude>
+    <ClInclude Include="source\interpreter\context.hpp">
+      <Filter>source\interpreter</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="source\resources\n-interpreter.rc">
+      <Filter>source\resources</Filter>
+    </ResourceCompile>
   </ItemGroup>
 </Project>

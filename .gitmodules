@@ -4,3 +4,6 @@
 [submodule "external-components/n-test"]
 	path = external-components/n-test
 	url = https://github.com/nova-compiler/n-test.git
+[submodule "external-components\\tools"]
+	path = external-components\\tools
+	url = https://github.com/nova-compiler/tools.git
