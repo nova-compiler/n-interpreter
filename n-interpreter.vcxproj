@@ -31,13 +31,13 @@
       <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">flex -o"$(ProjectDir)source\interpreter\tokens.cpp" %(Identity)</Command>
       <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(ProjectDir)source\interpreter\tokens.cpp</Outputs>
     </CustomBuild>
-    <None Include="source\interpreter\parser.output" />
     <CustomBuild Include="source\resources\n-interpreter.tpl-rc">
       <FileType>Document</FileType>
       <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">python external-components\tools\substitute.py -i source\resources\n-interpreter.tpl-rc -o source\resources\n-interpreter.rc -c .tools-settings --strict</Command>
       <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">source\resources\n-interpreter.rc</Outputs>
       <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(ProjectDir).tools-settings</AdditionalInputs>
     </CustomBuild>
+    <None Include="source\resources\parser.output" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="source\interpreter\parser.cpp" />
