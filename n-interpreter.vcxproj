@@ -18,7 +18,7 @@
       <FileType>Document</FileType>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</ExcludedFromBuild>
       <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">bison -v --report=all --report-file="$(ProjectDir)source\resources\parser.output" -d -o "$(ProjectDir)source\interpreter\parser.cpp" %(Identity)</Command>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(ProjectDir)source\interpreter\parser.cpp;$(ProjectDir)source\resources\parser.output;%(Outputs)</Outputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(ProjectDir)source\interpreter\parser.cpp;$(ProjectDir)source\interpreter\parser.hpp;$(ProjectDir)source\resources\parser.output;%(Outputs)</Outputs>
       <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">bison -v --report=all -d -o "$(ProjectDir)source\interpreter\parser.cpp" %(Identity)</Command>
       <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(ProjectDir)source\interpreter\parser.cpp;%(Outputs)</Outputs>
     </CustomBuild>
