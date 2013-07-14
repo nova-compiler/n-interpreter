@@ -1,3 +1,9 @@
+source/interpreter/parser.cpp
+source/interpreter/parser.hpp
+source/interpreter/tokens.cpp
+source/resources/n-interpreter.rc
+source/resources/parser.output
+
 #################
 ## Eclipse
 #################
